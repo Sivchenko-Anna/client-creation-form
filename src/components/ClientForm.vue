@@ -129,6 +129,7 @@
         </div>
       </div>
     </fieldset>
+
     <fieldset class="client-form__fieldset">
       <div class="client-form__group">
         <label for="index" class="client-form__label">Индекс</label>
@@ -189,6 +190,66 @@
       </div>
     </fieldset>
 
+    <fieldset class="client-form__fieldset">
+      <div class="client-form__group">
+        <label for="document" class="client-form__label required"
+          >Тип документа:</label
+        >
+        <select id="document" v-model="document" class="client-form__select">
+          <option value="">Выберите тип документа</option>
+          <option value="Паспорт">Паспорт</option>
+          <option value="Свидетельство о рождении">
+            Свидетельство о рождении
+          </option>
+          <option value="Вод. удостоверение">Вод. удостоверение</option>
+        </select>
+        <div class="error" v-if="$v.document.$dirty && !$v.document.required">
+          Обязательное поле
+        </div>
+      </div>
+      <div class="client-form__group">
+        <label for="series" class="client-form__label">Серия</label>
+        <input
+          id="series"
+          type="text"
+          v-model="series"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="number" class="client-form__label">Номер</label>
+        <input
+          id="number"
+          type="text"
+          v-model="number"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="issued-by" class="client-form__label">Кем выдан</label>
+        <input
+          id="issued-by"
+          type="text"
+          v-model="issuedBy"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="issuedate" class="client-form__label required"
+          >Дата выдачи
+        </label>
+        <input
+          id="issuedate"
+          type="date"
+          v-model="$v.issuedate.$model"
+          class="client-form__input"
+        />
+        <div class="error" v-if="$v.issuedate.$dirty && !$v.issuedate.required">
+          Обязательное поле
+        </div>
+      </div>
+    </fieldset>
+
     <button class="client-form__submit-button" type="submit">Отправить</button>
   </form>
 </template>
@@ -214,6 +275,11 @@ export default {
     city: "",
     street: "",
     house: "",
+    document: "",
+    series: "",
+    number: "",
+    issuedBy: "",
+    issuedate: "",
   }),
   validations: {
     surname: {
@@ -236,6 +302,12 @@ export default {
     city: {
       required,
     },
+    document: {
+      required,
+    },
+    issuedate: {
+      required,
+    }
   },
   methods: {
     submitForm() {
