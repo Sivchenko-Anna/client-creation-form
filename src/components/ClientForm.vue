@@ -114,15 +114,78 @@
         </select>
       </div>
       <div class="client-form__group">
-        <label for="sendSms" class="client-form__label">Отправлять СМС:</label>
+        <label for="sendSms" class="client-form__label"
+          >Не отправлять СМС:</label
+        >
         <div class="client-form__option">
-          <input id="sendSms" type="checkbox" class="client-form__checkbox" />
+          <input
+            id="sendSms"
+            type="checkbox"
+            class="client-form__checkbox"
+            true-value="Не отправлять СМС"
+            false-value="Отправить СМС"
+          />
           <span class="client-form__option-text">Да</span>
         </div>
-        <div class="client-form__option">
-          <input id="noSms" type="checkbox" class="client-form__checkbox" />
-          <span class="client-form__option-text">Нет</span>
+      </div>
+    </fieldset>
+    <fieldset class="client-form__fieldset">
+      <div class="client-form__group">
+        <label for="index" class="client-form__label">Индекс</label>
+        <input
+          id="index"
+          type="text"
+          v-model="index"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="country" class="client-form__label">Страна</label>
+        <input
+          id="country"
+          type="text"
+          v-model="country"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="region" class="client-form__label">Область</label>
+        <input
+          id="region"
+          type="text"
+          v-model="region"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="city" class="client-form__label required">Город</label>
+        <input
+          id="city"
+          type="text"
+          v-model="city"
+          class="client-form__input"
+        />
+        <div class="error" v-if="$v.city.$dirty && !$v.city.required">
+          Обязательное поле
         </div>
+      </div>
+      <div class="client-form__group">
+        <label for="street" class="client-form__label">Улица</label>
+        <input
+          id="street"
+          type="text"
+          v-model="street"
+          class="client-form__input"
+        />
+      </div>
+      <div class="client-form__group">
+        <label for="house" class="client-form__label">Дом</label>
+        <input
+          id="house"
+          type="text"
+          v-model="house"
+          class="client-form__input"
+        />
       </div>
     </fieldset>
 
@@ -145,6 +208,12 @@ export default {
     clientGroup: [],
     doctor: "",
     noSms: false,
+    index: "",
+    country: "",
+    region: "",
+    city: "",
+    street: "",
+    house: "",
   }),
   validations: {
     surname: {
@@ -164,6 +233,9 @@ export default {
     clientGroup: {
       required,
     },
+    city: {
+      required,
+    },
   },
   methods: {
     submitForm() {
@@ -175,7 +247,7 @@ export default {
         "clientGroup",
       ];
 
-      const isEmpty = requiredFields.some(field => !this[field]);
+      const isEmpty = requiredFields.some((field) => !this[field]);
       const errors = requiredFields.filter((field) => this.$v[field].$error);
 
       if (errors.length > 0 || isEmpty) {
