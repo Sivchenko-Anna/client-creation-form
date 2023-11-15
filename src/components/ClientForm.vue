@@ -274,10 +274,10 @@
       </button>
     </form>
     <div v-if="isClientCreated" class="modal">
-    <div class="modal__content">
-      <span class="modal__success-message">Новый клиент успешно создан!</span>
+      <div class="modal__content">
+        <span class="modal__success-message">Новый клиент успешно создан!</span>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 

@@ -1,24 +1,6 @@
 # client-creation-form
 
-## Project setup
-```
-npm install
-```
+Это мой первый опыт работы с Vue. При наличии большего количества времени и опыта я бы разделила компонент на более мелкие компоненты для повышения удобства работы и повторного использования кода. Например, можно было выделить отдельные компоненты для полей ввода, чтобы сделать код более модульным. Компоненты полей ввода тогда соответственно должно были принимать свойства, такие как label, inputType, placeholder и v-model.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
