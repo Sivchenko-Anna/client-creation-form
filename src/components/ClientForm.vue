@@ -307,7 +307,7 @@ export default {
     number: "",
     issuedBy: "",
     issuedate: "",
-    isClientCreated: true,
+    isClientCreated: false,
   }),
   validations: {
     surname: {
